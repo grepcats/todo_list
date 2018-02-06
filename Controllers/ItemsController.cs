@@ -9,14 +9,7 @@ namespace ToDoList.Controllers
     [Route("/")]
     public ActionResult Index()
     {
-      return View("Index");
-    }
-
-    [HttpGet("/items")]
-    public ActionResult Items()
-    {
-      List<Item> allItems = Item.GetAll();
-      return View(allItems);
+      return View("Index", Item.GetAll());
     }
 
     [HttpGet("/items/new")]
@@ -30,13 +23,13 @@ namespace ToDoList.Controllers
     {
       Item newItem = new Item(Request.Form["new-item"]);
       List<Item> allItems = Item.GetAll();
-      return View("Items", allItems);
+      return View("Index", allItems);
     }
 
     [HttpGet("/items/{id}")]
     public ActionResult Detail(int id)
     {
-      Item item = Item.Find(id);
+      Item item = Item.Find(id - 1);
       return View(item);
     }
   }
