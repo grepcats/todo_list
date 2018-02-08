@@ -7,9 +7,10 @@
   </head>
   <body>
     <div class="container">
+      <h1>ARHHHHHHHHHHAHSDKAJKA</h1>
       <h1>Add a new item to @Model["category"].GetName()</h1>
-      <form action = "/items" method="post">
-        <input id="category-id" name="category-id" type="hidden" value='@Model["cateogry"].GetId()'>
+      <form action = "/categories/items" method="post">
+        <input id="category-id" name="category-id" type="hidden" value='@Model["category"].GetId()'>
         <label for="item-description">Item description</label>
         <input id="item-description" name="item-description" type="text">
         <button type="submit">Add Item</button>

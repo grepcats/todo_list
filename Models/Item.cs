@@ -6,14 +6,16 @@ namespace ToDoList.Models
   {
     private string _description;
     private int _id;
+    private int _categoryId;
 
     private static List<Item> _instances = new List<Item> {};
 
-    public Item (string description)
+    public Item (string description, int catId)
     {
       _description = description;
       _instances.Add(this);
       _id = _instances.Count;
+      _categoryId = catId;
     }
 
     public string GetDescription()
@@ -44,6 +46,16 @@ namespace ToDoList.Models
     public static Item Find(int searchId)
     {
       return _instances[searchId];
+    }
+
+    public void SetCatId(int newCatId)
+    {
+        _categoryId = newCatId;
+    }
+
+    public int GetCatId()
+    {
+        return _categoryId;
     }
   }
 }
