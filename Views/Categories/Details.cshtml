@@ -6,14 +6,12 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
   </head>
   <body>
-    <div class="container">
+    <div class="container  text-center">
       <h3>Here are all the items in this category:</h3>
-      <ol>
-        @foreach (var item in @Model["items"])
-        {
-          <li>@item.GetDescription()</li>
-        }
-      </ol>
+      @foreach (var item in @Model["items"])
+      {
+        <p>@item.GetDescription()</p>
+      }
       <p><a href='/categories/@Model["category"].GetId()/items/new'>Add a new item</a></p>
       <p><a href="/categories">Return to categories list</a></p>
       <p><a href="/">Return to main page</a></p>

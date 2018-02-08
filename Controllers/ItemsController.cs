@@ -7,27 +7,16 @@ namespace ToDoList.Controllers
 {
   public class ItemsController : Controller
   {
-    // [HttpGet("/items")]
-    // public ActionResult Index()
-    // {
-    //   return View("Index", Item.GetAll());
-    // }
-    //
-    // [HttpPost("/categories/items")]
-    // public ActionResult Details()
-    // {
-    //     Dictionary<string, object> model = new Dictionary<string, object>();
-    //     int foundCategoryId = Int32.Parse(Request.Form["category-id"]);
-    //     Category foundCategory = Category.Find(foundCategoryId);
-    //     List<Item> categoryItems = foundCategory.GetItems();
-    //     string itemDescription = Request.Form["item-description"];
-    //     Item newItem = new Item(itemDescription, foundCategoryId);
-    //     categoryItems.Add(newItem);
-    //     model.Add("items", categoryItems);
-    //     model.Add("category", foundCategory);
-    //     return View("Details", model);
-    // }
-
+    [HttpGet("/categories/{categoryId}/items/new")]
+    public ActionResult CreateItemForm(int categoryId)
+    {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Category foundCategory = Category.Find(categoryId);
+        List<Item> allItems = foundCategory.GetItems();
+        model.Add("category", foundCategory);
+        model.Add("items", allItems);
+        return View("CreateItemForm", model);
+    }
 
     [HttpGet("/items/{id}")]
     public ActionResult Details(int id)
